@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "News Portal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<header class="navbar">
+    <div class="container">
+        <a class="navbar-brand" href="#">News Portal</a>
+    </div>
+</header>
+
+<main>
+    <div class="container">
+        <section class="intro">
+            <h1>Welcome to the News Portal</h1>
+            <p>Select a country from the list below to explore the latest news.</p>
+        </section>
+
+        <section class="country-grid">
+            @Html.ActionLink("India", "India", "Home", null, new { @class = "country-box" })
+            @Html.ActionLink("Sri Lanka", "SriLanka", "Home", null, new { @class = "country-box" })
+            @Html.ActionLink("Germany", "Germany", "Home", null, new { @class = "country-box" })
+            @Html.ActionLink("Russia", "Russia", "Home", null, new { @class = "country-box" })
+            @Html.ActionLink("USA", "USA", "Home", null, new { @class = "country-box" })
+        </section>
+    </div>
+</main>

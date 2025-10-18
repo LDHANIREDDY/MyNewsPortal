@@ -1,0 +1,42 @@
+﻿@model MyNewsPortals.Models.NewsApiResponse
+
+@{
+    ViewBag.Title = ViewBag.Country + " News";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<main>
+    <div class="container">
+
+        <h2>Latest News - @ViewBag.Country</h2>
+
+        @if (Model?.Articles != null && Model.Articles.Any())
+        {
+            <div class="row">
+                @foreach (var article in Model.Articles)
+                {
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            @if (!string.IsNullOrEmpty(article.UrlToImage))
+                            {
+                                <img src="@article.UrlToImage" class="card-img-top" alt="News image">
+                            }
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title">@article.Title</h5>
+                                <p class="card-text">@article.Description</p>
+                                <a href="@article.Url" target="_blank" class="btn btn-sm btn-outline-primary mt-auto">Read More</a>
+                            </div>
+                            <div class="card-footer text-muted small">
+                                @article.PublishedAt?.ToLocalTime().ToString("MMM dd, yyyy hh:mm tt")
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <p>No news articles available for @ViewBag.Country.</p>
+        }
+    </div>
+</main>
