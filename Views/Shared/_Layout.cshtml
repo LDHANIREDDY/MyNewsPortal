@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MyNewsPortals</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MyNewsPortals.styles.css" asp-append-version="true" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet" />
+</head>
+<body>
+    <!-- Top Bar with Centered Logo -->
+    <header class="top-bar text-center py-3">
+        <div class="container">
+            <img src="~/images/harvester-logo.png" alt="Tractor Logo" class="tractor-logo" />
+            <h1 class="site-title">DHANI NEWS PORTAL</h1>
+        </div>
+        <div class="header-date">
+            @DateTime.Now.ToString("MMMM dd, yyyy") <!-- This shows: October 17, 2025 -->
+        </div>
+    </header>
+
+    <!-- Secondary Navigation Bar -->
+    <nav class="secondary-nav border-bottom">
+        <div class="container">
+            <div class="d-flex flex-wrap justify-content-center gap-4 py-2">
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="India">India</a>
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="SriLanka">Sri Lanka</a>
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Germany">Germany</a>
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Russia">Russia</a>
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="USA">USA</a>
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Body -->
+    <div class="container mt-4">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- Footer -->
+    @* <footer class="footer bg-dark text-white py-2 mt-4 border-top">
+        <div class="container text-center small">
+            <p class="mb-0">© @DateTime.Now.Year All rights reserved.</p>
+        </div>
+    </footer> *@
+
+    <footer class="text-center small-muted">
+        <div class="container">
+            <p class="mb-0">© @DateTime.Now.Year All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
